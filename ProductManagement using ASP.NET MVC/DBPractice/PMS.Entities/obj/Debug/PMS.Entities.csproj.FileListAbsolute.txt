@@ -1,0 +1,9 @@
+C:\Users\M. Hammad Shahid\Documents\Visual Studio 2013\Projects\ead_s18_a6_bcsf15m009\DBPractice\PMS.Entities\bin\Debug\PMS.Entities.dll
+C:\Users\M. Hammad Shahid\Documents\Visual Studio 2013\Projects\ead_s18_a6_bcsf15m009\DBPractice\PMS.Entities\bin\Debug\PMS.Entities.pdb
+C:\Users\M. Hammad Shahid\Documents\Visual Studio 2013\Projects\ead_s18_a6_bcsf15m009\DBPractice\PMS.Entities\obj\Debug\PMS.Entities.csprojResolveAssemblyReference.cache
+C:\Users\M. Hammad Shahid\Documents\Visual Studio 2013\Projects\ead_s18_a6_bcsf15m009\DBPractice\PMS.Entities\obj\Debug\PMS.Entities.dll
+C:\Users\M. Hammad Shahid\Documents\Visual Studio 2013\Projects\ead_s18_a6_bcsf15m009\DBPractice\PMS.Entities\obj\Debug\PMS.Entities.pdb
+C:\Users\M. Hammad Shahid\Documents\Visual Studio 2013\Projects\ead_s18_a7_bcsf15m009\DBPractice\PMS.Entities\bin\Debug\PMS.Entities.dll
+C:\Users\M. Hammad Shahid\Documents\Visual Studio 2013\Projects\ead_s18_a7_bcsf15m009\DBPractice\PMS.Entities\bin\Debug\PMS.Entities.pdb
+C:\Users\M. Hammad Shahid\Documents\Visual Studio 2013\Projects\ead_s18_a7_bcsf15m009\DBPractice\PMS.Entities\obj\Debug\PMS.Entities.dll
+C:\Users\M. Hammad Shahid\Documents\Visual Studio 2013\Projects\ead_s18_a7_bcsf15m009\DBPractice\PMS.Entities\obj\Debug\PMS.Entities.pdb

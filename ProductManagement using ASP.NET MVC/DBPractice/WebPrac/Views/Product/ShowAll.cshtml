@@ -1,0 +1,140 @@
+﻿@model List<PMS.Entities.ProductDTO>
+
+@{
+    ViewBag.Title = "ShowAll";
+    Layout = "~/Views/Shared/_MyProductLayout.cshtml";
+}
+<head>
+    <title>All Products</title>
+</head>
+
+@section scripts{
+
+    <script>
+        $(function () {
+            $(".editbutton").click(function () {
+                var pid = $(this).attr("pid");
+                $("#ProductID").val(pid);
+            });
+        });
+        function confirmDelete()
+        {
+            if (confirm("Are You sure to delete"))
+                return true;
+            return false;
+        }
+        function ValidateComment()
+        {
+            if ($("#txtComment").val() == "")
+                return false;
+        }
+    </script>
+
+}
+
+
+<h2>ShowAll</h2>
+
+<a href="/Product/New">New </a> <br />
+
+<span>@TempData["Msg"]</span>
+<h2 style="color:red;align-content:center">@ViewBag.err</h2>
+
+    @*<table>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.ProductID</td>
+                    <td>@item.Name</td>
+                    <td>@item.Price</td>
+                    <td>@item.CreatedOn</td>
+                    <td>@item.CreatedBy</td>
+                    <td><img src="/UploadedFiles/@item.PictureName" style="width:100px;height:100px;" /></td>
+
+                    @if (WebPrac.Security.SessionManager.User.IsAdmin)
+                    {
+
+                        <td><a href="/Product/Edit/@item.ProductID">Edit</a></td>
+                        <td><a href="/Product/Delete/@item.ProductID">Delete</a></td>
+
+                        <td><input type="submit" value="Edit" class="editbutton" pid="@item.ProductID" /> </td>
+                    }
+                </tr>
+            }
+        </table>*@
+
+
+    <div>
+    
+        @foreach (var item in Model)
+        {
+            <div class="prodbox">
+                <form action='@Url.Content("~/Product/Edit2")' method="post">
+                    <input type="hidden" name="ProductID" id="ProductID" />
+
+                    <div style="float:left">
+                        <img src="/UploadedFiles/@item.PictureName" style="width:100px;height:100px;" />
+                    </div>
+                    <div style="float:left">
+                        Product Id: @item.ProductID <br />
+                        Name: @item.Name <br />
+                        Price: @item.Price <br />
+                        @{
+            var obj = PMS.BAL.UserBO.GetUserById(@item.CreatedBy);
+                        }
+                        Created On @item.CreatedOn <b>By</b> @obj.Name
+
+                    </div>
+                    <div style="clear:both">
+                        @if (WebPrac.Security.SessionManager.User.IsAdmin)
+                        {
+                            <input type="submit" value="Edit" class="editbutton" pid="@item.ProductID" style="background-color:lawngreen" />
+                            <a href='@Url.Content("~/Product/Delete/" + @item.ProductID)' onclick="return confirm('are you sure to delete?')" class=" btn btn-danger" style="width:150px;height:45px;">Delete</a>
+                            
+                        }
+                        @if (!(WebPrac.Security.SessionManager.User.IsAdmin) && (@item.CreatedBy == WebPrac.Security.SessionManager.User.UserID))
+                        {
+                            <input type="submit" value="Edit" class="editbutton" pid="@item.ProductID" style="background-color:lawngreen" />
+    <a href='@Url.Content("~/Product/Delete/" + @item.ProductID)' onclick="return confirm('Are you sure?')" class=" btn btn-danger" style="width:150px;height:45px;">Delete</a>
+
+                        }
+                    </div>
+
+
+                </form>
+
+                <div class="commentarea">
+                    <form action='@Url.Content("~/Product/SaveComment")'>
+                        <textarea class="txtComment" id="txtComment" name="txtComment" rows="1" cols="50"></textarea>
+                        <input type="hidden" name="PID" id="PID" value="@item.ProductID" />
+                        <input type="submit" value="Add" class="editbutton" />
+                    </form>
+                </div>
+
+                <br />
+                <div class="comments">
+
+                    @foreach (var comment in item.Comments)
+                    {
+                        var obj1 = PMS.BAL.UserBO.GetUserById(comment.UserID);
+                        <div class="comment">
+                            <div class="picture">
+                                <img src='@Url.Content("~/UploadedFiles/" + obj1.PictureName)' />
+                            </div>
+                            <div>
+                                <span class="name">@obj1.PictureName</span><br />
+                                <a href='@Url.Content("~/User/Profile/"+ @obj1.UserID)'>@comment.UserName</a><br />
+                                <span class="comment-text">@comment.CommentText</span> <br />
+                                <span class="comment-text">@comment.CommentOn</span><br />
+
+                            </div>
+                        </div>
+                        <br />
+                        <div style="clear:both"></div>
+                    }
+                </div>
+            </div>
+        }
+
+</div>
+    

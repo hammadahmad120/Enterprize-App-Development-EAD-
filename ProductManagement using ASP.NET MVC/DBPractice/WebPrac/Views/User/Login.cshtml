@@ -1,0 +1,50 @@
+﻿@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_MyPublicLayout.cshtml";
+}
+<head>
+     <title>Login</title>
+    <script type="text/javascript" src="~/Scripts/LogEmail.js">
+        function ValidateLogPass() {
+            alert("in function");
+            var log = document.getElementById("login");
+            var pass = document.getElementById("password");
+            if (log.value == "" || pass.value == "") {
+                alert("Login and password both mandatory");
+                return false;
+            }
+            else
+                return true;
+        }
+    </script>
+    </head>
+<nav class="navbar navbar-inverse" style="background-color:blue">
+    <div class="container-fluid">
+        <div class="nav navbar-nav">
+
+            <button style="float:right;margin-right:50px;" id="Reg" onclick="window.location.href='@Url.Content("~/User/Register")'" class="btn btn-primary">Sign up</button>
+        </div>
+    </div>
+</nav>
+    <div class="div1">
+        <h2 class="text-danger">Login</h2>
+        <form action='@Url.Content("~/User/Login")' method="post">
+            <div class="form-group">
+                <input type="text" name="login" id="login" value="@ViewBag.Login" placeholder="Login" /> <br /><br />
+            </div>
+            <div class="form-group">
+                <input type="password" name="password" id="password" placeholder="Password" /> <br /><br /><br />
+                <input type="submit" value="Login" onclick="return ValidateLogPass();" class="btn btn-danger" />
+            </div>
+        </form>
+        <hr />
+        Forgot Password?<br />
+        <form action='@Url.Content("~/User/Reset")' method="post">
+            <div class="form-group">
+                <input class="box" type="text" id="txtemail" name="txtemail" placeholder="Email" /><br /><br />
+            </div>
+            <input name="btnsubmit1" id="btnsubmit1" type="submit" value="Reset" onclick="return ValidateEmail();" class="btn btn-danger">
+        </form>
+    </div>
+    <span style="color:red;">@ViewBag.MSG</span>
+    <span style="color:red;">@TempData["tmsg"]</span>

@@ -1,0 +1,37 @@
+								System Programming Lab 4						Marks=60
+
+Task 1:																	(10)
+In this task, you have to write deamon process using systemd.
+Basically, you have to write a program "mytimeserver.py" and also its service unit file "mytime.server" and then run that service.
+
+*************************************************************************************************************************************
+
+Task 2:																	(5+5)
+a. If static priority is 100 and its sleep time is 400. What will be its new dynamic priority?
+b. Consider a process with static priority of 130, what is the value of avg_sleep time for this process to be considered interactive?
+
+*************************************************************************************************************************************
+
+Task 3.																	(2.5*4)
+a. What is vruntime?
+b. How priority is handled in CFS?
+c. Change scheduling policy to SCHED_RR.
+d. Change nice value of watch process to 5 by schedtool.
+
+*************************************************************************************************************************************
+
+Task 4.																	(10)
+Write a program to check nice value of calling process. 
+Then increase nice value by 6 and the decrease it to 20. Whether priority of process will increase in these cases or not?
+
+*************************************************************************************************************************************
+
+Task 5.																	(5)
+Write a program to check scheduling policy of currently running process.
+
+*********************************************    VIVA  AT END (video # 20, 21)  *****************************************************	(15)
+																
+
+
+
+

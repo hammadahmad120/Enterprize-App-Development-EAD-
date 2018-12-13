@@ -1,0 +1,46 @@
+﻿@model PMS.Entities.ProductDTO
+
+@{
+    ViewBag.Title = "New";
+    Layout = "~/Views/Shared/_MyProductLayout.cshtml";
+}
+<head>
+    <title>Product</title>
+</head>
+@section scripts{
+    <script>
+        function Validate() {
+            var numExp = /^[0-9]+$/;
+            var name = document.getElementById("Name");
+            var price = document.getElementById("Price");
+            if (name.value == "" ||  price.value == "") {
+                alert("All values are mandatory except picture");
+                return false;
+            }
+            else if(!(price.value.match(numExp)))
+            {
+                alert("Price should be numberic");
+                return false;
+            }
+            return true;
+        }
+    </script>
+    
+    }
+
+
+<form action='@Url.Content("~/Product/Save")' method="post" enctype="multipart/form-data">
+    <div class="div1">
+        <h2 class="text-danger"> Product </h2><hr />
+        @if (Model.PictureName != "")
+        {
+            <img src='@Url.Content("~/UploadedFiles")/@Model.PictureName' style="width:100px;height:100px;" /> <br /><br /><br />
+        }
+        <input type="hidden" name="ProductID" value="@Model.ProductID" />
+        <input type="hidden" name="PictureName" value="@Model.PictureName" />
+        <input type="text" name="Name" id="Name" value="@Model.Name" placeholder="Product name" /> <br /><br /><br />
+        price: <input type="text" name="Price" id="Price" value="@Model.Price" placeholder="Price" /> <br /><br /><br />
+        <input type="file" name="Image" style="margin-left:200px;"/><br /><br />
+        <input type="submit" value="Save" onclick="return Validate()" />
+        </div>
+</form>

@@ -1,0 +1,57 @@
+﻿@model PMS.Entities.UserDTO
+@{
+    ViewBag.Title = "Register";
+    
+    Layout = "~/Views/Shared/_MyPublicLayout.cshtml";
+}
+<head>
+    <title>Register</title>
+    <script type="text/javascript" src="~/Scripts/Validate.js">
+
+    </script>
+    <style>
+         .box{
+            width:300px;height:30px;background-color:white;
+
+        }
+
+        .submit{
+	
+
+width:150px;
+height:30px;
+font-family:arial;
+ border:none;
+ }
+    </style>
+   
+</head>
+<div class="div1">
+    <h2 class="text-danger">Sign Up</h2>
+    <form action='@Url.Content("~/User/Save")' method="post" enctype="multipart/form-data">
+
+        @if (Model.PictureName != "" && Model.UserID != 0)
+        {
+            <img src='@Url.Content("~/UploadedFiles")/@Model.PictureName' style="width:100px;height:100px;" /> <br />
+        }
+        <input type="hidden" name="UserID" value="@Model.UserID" />
+        <input type="hidden" name="PictureName" value="@Model.PictureName" />
+        <input class="box" type="text" id="txtname" name="txtname" value="@Model.Name" placeholder="Name" /><br /><br /><br />
+        <input class="box" type="text" id="txtemail" name="txtemail" value="@Model.Email" placeholder="Email" /><br /><br /><br />
+
+                @if (Model.UserID == 0)
+                {
+                    <input class="box" type="text" id="txtlogin" name="txtlogin" value="@Model.Login" placeholder="Login" /><br /><br /><br />
+               <input class="box" type="password" id="txtpassword" name="txtpassword" value="" placeholder="Password" /> <br /><br /><br />
+                }
+        @if (Model.UserID > 0)
+        {
+            <input type="hidden" id="txtlogin" name="txtlogin" value="abc" />
+            <input type="hidden" id="txtpassword" name="txtpassword" value="@Model.Password" />
+        }
+
+        <input name="image" id="image" type="file" style="margin-left:200px;"><br /><br />
+        <input name="btnsubmit" id="btnsubmit" type="submit" value="Create" onclick=" return Validate()" class="btn btn-primary">
+    </form>
+    </div>
+    <h2>@ViewData["ErrorMsg"]</h2>
