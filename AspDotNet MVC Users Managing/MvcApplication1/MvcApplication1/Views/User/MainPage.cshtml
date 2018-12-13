@@ -1,0 +1,29 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>MainPage</title>
+    <style>
+        #myBtn{
+            margin-left:500px;
+            position:center;
+            width:300px;
+            height:50px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <br /><br /><br /><br /><br /><br />
+        <button id="myBtn" onclick="window.location.href='@Url.Content("~/User/AddUser")'">New User</button><br /><br /><br />
+        <button id="myBtn" onclick="window.location.href='@Url.Content("~/User/Login")'">Existing User</button><br /><br /><br />
+        <button id="myBtn" onclick="window.location.href='@Url.Content("~/Admin/Alogin")'">Admin</button><br /><br /><br />
+        <button id="myBtn">Exit</button><br /><br /><br />
+    </div>
+</body>
+</html>

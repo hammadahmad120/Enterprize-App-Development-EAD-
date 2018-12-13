@@ -1,0 +1,28 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Reset</title>
+</head>
+<body>
+    <div>
+        <h1>Enter Code</h1>
+        <form action='@Url.Content("~/User/ConfirmCode")'>
+            <input type="text" id="txtcode" name="txtcode" />
+            <input type="submit" id="btnsubmit" name="btnsubmit" value="Confirm" />
+        </form>
+    </div>
+    @{
+        if (ViewData["ErrorMsg2"] != null)
+        {
+            var str = ViewData["ErrorMsg2"].ToString();
+            <h2>@str</h2>
+        }
+    }
+</body>
+</html>

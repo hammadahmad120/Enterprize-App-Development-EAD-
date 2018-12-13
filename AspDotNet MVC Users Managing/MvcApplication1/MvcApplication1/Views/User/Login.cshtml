@@ -1,0 +1,89 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+    <script>
+        function Validate()
+        {
+            var em = document.getElementById("txtemail");
+            if (em.value == "") {
+                alert("Provide valid email");
+                return false;
+            }
+            else
+                return true;
+        }
+        function loginchk() {
+            var log = document.getElementById("txtlogin");
+            var pass = document.getElementById("txtpassword");
+            if (log.value == "" || pass.value == "") {
+                alert("Login and password both mandatory");
+                return false;
+            }
+            else
+                return true;
+        }
+    </script>
+    <style>
+        .box{width:300px;height:30px;background-color:white; margin-left:20px;}
+.submit{
+	
+
+width:200px;
+height:40px;
+color:#404040;
+font-family:arial;
+ border:none;
+ 
+ margin-left:50px;
+ margin-bottom:30px;
+ 
+ 
+ 
+ }
+
+    </style>
+</head>
+<body>
+    <div style="margin-left:150px;margin-top:200px;border: 1px solid black;height:500px;width:550px;">
+        <div>
+            <form action='@Url.Content("~/User/LoginUser")' method="post">
+                <br /><br />
+                Login: <input class="box" type="text" id="txtlogin" name="txtlogin" /><br /><br /><br />
+                Password: <input class="box" type="password" id="txtpassword" name="txtpassword" /> <br /><br /><br />
+                <table>
+                    <tr>
+                        <td style="width:100px"><input class="submit" name="btnsubmit" id="btnsubmit" type="submit" value="Login" onclick="return loginchk();"></td>
+                        
+                    </tr>
+                </table>
+            </form>
+            <button class="submit" id="myBtn" onclick="window.location.href='@Url.Content("~/User/Index")'">Cancel</button>
+        </div>
+        <div>
+            Forgot Password?<br />
+            <form action='@Url.Content("~/User/Reset")'>
+                Email <input class="box" type="text" id="txtemail" name="txtemail" /><br /><br /><br />
+                <input class="submit" name="btnsubmit1" id="btnsubmit1" type="submit" value="Reset" onclick="return Validate();">
+            </form>
+        </div>
+        @{ if (ViewData["ErrorMsg1"] != null)
+         {
+             var str = ViewData["ErrorMsg1"].ToString();
+            <h2 style="color:red;">@str</h2>
+         }
+         if (ViewData["Err"] != null)
+         {
+             var str1 = ViewData["Err"].ToString();
+            <h2 style="color:red;">@str1</h2>
+           }
+}
+    </div>
+</body>
+</html>

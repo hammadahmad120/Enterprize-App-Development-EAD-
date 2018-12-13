@@ -1,0 +1,63 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Alogin</title>
+    <script>
+        function loginchk() {
+            var log = document.getElementById("txtlogin");
+            var pass = document.getElementById("txtpassword");
+            if (log.value == "" || pass.value == "") {
+                alert("Login and password both mandatory");
+                return false;
+            }
+            else
+                return true;
+        }
+    </script>
+    <style>
+        .submit{
+	
+
+width:200px;
+height:40px;
+color:#404040;
+font-family:arial;
+ border:none;
+ 
+ margin-left:50px;
+ margin-bottom:30px;
+ 
+ 
+ 
+ }
+    </style>
+</head>
+<body>
+    <div>
+        <form action='@Url.Content("~/Admin/HomeAdmin")' method="post">
+            Login: <input type="text" id="txtlogin" name="txtlogin" /><br /><br /><br />
+            Password: <input type="password" id="txtpassword" name="txtpassword" /> <br /><br /><br />
+            <table>
+                <tr>
+                    <td style="width:100px"><input class="submit" name="btnsubmit" id="btnsubmit" type="submit" value="Login" onclick="return loginchk();"></td>
+                    
+                </tr>
+            </table>
+        </form>
+        <input class="submit" name="btnsubmit" id="btnsubmit" type="button" value="Cancel" onclick="window.location.href='@Url.Content("~/User/Index")'">
+    </div>
+    @{
+        if (ViewData["Err"] != null)
+        {
+            var str1 = ViewData["Err"].ToString();
+            <h2 style="color:red;">@str1</h2>
+        }
+    }
+</body>
+</html>

@@ -1,0 +1,48 @@
+﻿@model List<Assignment4.User>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>HomeAdmin</title>
+</head>
+<body>
+    <div>
+        
+           <h2>Users</h2>
+        <button id="myBtn" onclick="window.location.href='@Url.Content("~/User/Index")'" style="float:right;">Logout</button> 
+
+        <table id='tblMain' style='border:1px solid; border-collapse: collapse;'>
+            <tr>
+                <th style='width: 100px; color: black; text-align: center; border-collapse: collapse;border:1px solid;height:50px;'>ID</th>
+                <th style='width: 100px; color: black; text-align: center; border-collapse: collapse;border:1px solid;height:50px;'>Name</th>
+                <th style='width: 100px; color: black; text-align: center; border-collapse: collapse;border:1px solid;height:50px;'>login</th>
+                <th style='width: 100px; color: black; text-align: center; border-collapse: collapse;border:1px solid;height:50px;'>Address</th>
+                <th style='width: 100px; color: black; text-align: center; border-collapse: collapse;border:1px solid;height:50px;'>Age</th>
+                <th style='width: 100px; color: black; text-align: center; border-collapse: collapse;border:1px solid;height:50px;'>Edit</th>
+            </tr>
+
+            @{
+                for (int i = 0; i < Model.Count; i++)
+                {
+                    <tr>
+                        <td style='width: 100px; text-align: center;height:50px; border-collapse: collapse;border:1px solid;'> @Model[i].id </td>
+
+
+                        <td style='width: 100px; text-align: center;height:50px; border-collapse: collapse;border:1px solid;'>@Model[i].Name</td>
+
+                        <td style='width: 200px; text-align: center;height:50px; border-collapse: collapse;border:1px solid;'>@Model[i].Login </td>
+                        <td style='width: 200px; text-align: center;height:50px; border-collapse: collapse;border:1px solid;'>@Model[i].Address </td>
+                        <td style='width: 200px; text-align: center;height:50px; border-collapse: collapse;border:1px solid;'>@Model[i].age </td>
+                        <td style='width: 100px; text-align: center;height:50px; border-collapse: collapse;border:1px solid;'><a href="/Admin/Edit/@Model[i].id">Edit</a></td>
+                    </tr>
+                }
+
+
+            }
+        </table>
+        
+    </div>
+</body>
+</html>

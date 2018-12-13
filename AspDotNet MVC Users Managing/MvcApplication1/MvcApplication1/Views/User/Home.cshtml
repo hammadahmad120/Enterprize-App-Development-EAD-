@@ -1,0 +1,30 @@
+﻿
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Home</title>
+    <style>
+        #myBtn{
+            float:right;
+            margin-right:100px;
+            width:100px;
+        }
+        </style>
+</head>
+<body>
+    <div>
+        @{
+            var obj = new Assignment4.User();
+             obj = (Assignment4.User)ViewData["User"];
+        }
+        <h1>Welcome @obj.Name</h1>
+        <img style="float:right;" src="~/UploadedFiles/@obj.ImageName" alt="" width="120" height="120" /><br /><br />
+        <button id="myBtn" onclick="window.location.href='@Url.Content("~/User/EditUser")'">Edit profile</button><br /><br />
+        <button id="myBtn" onclick="window.location.href='@Url.Content("~/User/Logout")'">Logout</button>
+    </div>
+</body>
+</html>

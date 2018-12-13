@@ -1,0 +1,79 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>AddUser</title>
+    <script type="text/javascript" src="~/Scripts/jquery-3.2.1.min.js">
+
+    </script>
+    <script type="text/javascript" src="~/Scripts/UserValidate.js">
+
+    </script>
+
+    
+    <style>
+        #myDiv{
+            margin-left:200px;
+            margin-top:100px;
+        }
+        .box{
+            width:300px;height:30px;background-color:white;
+
+        }
+
+        .submit{
+	
+
+width:150px;
+height:30px;
+font-family:arial;
+ border:none;
+ }
+    </style>
+</head>
+<body>
+    <div id="myDiv">
+        @{
+            if(ViewData["ErrorMsg"]!=null)
+            {
+                var str = ViewData["ErrorMsg"].ToString();
+                <h2>@str</h2>
+            }
+        }
+        <form action='@Url.Content("~/User/Home")' method="post" enctype="multipart/form-data">
+            Name: <input class="box" type="text" id="txtname" name="txtname"  /><br /><br /><br />
+            Login: <input class="box" type="text" id="txtlogin" name="txtlogin" /><br /><br /><br />
+            Password: <input class="box" type="password" id="txtpassword" name="txtpassword" value="@ViewData["password"]" /> <br /><br /><br />
+            Email: <input class="box" type="text" id="txtemail" name="txtemail" value="@ViewData["email"]" /> <br /><br /><br />
+            Gender: <select class="box" id="txtgender" name="txtgender">
+    <option value="M">Male</option>
+    <option value="F">Female</option>
+    <option value="O">Other</option>
+</select><br /><br /><br />
+            Address: <input class="box" type="text" id="txtaddress" name="txtaddress" value="@ViewData["address"]" /> <br /><br /><br />
+            Age: <input class="box" type="number" id="txtage" name="txtage" value="@ViewData["age"]" /> <br /><br /><br />
+            NIC: <input class="box" type="text" id="txtnic" name="txtnic" value="@ViewData["nic"]" maxlength="13" minlength="13" /> <br /><br /><br />
+            DOB: <input class="box" type="date" id="txtdob" name="txtdob" value="@ViewData["dob"]" /> <br /><br /><br />
+            Sports: <input name="txtcricket" id="txtcricket" type="checkbox" value="cric">Cricket
+            <input name="txthockey" id="txthockey" type="checkbox" value="hock">Hockey
+            <input name="txtchess" id="txtchess" type="checkbox" value="chess">Chess<br /><br /><br />
+            <input name="image" id="image" type="file">
+            
+            <br /><br />
+            <table >
+                <tr>
+                    <td style="width:100px"><input class="submit" name="btnsubmit" id="btnsubmit" type="submit" value="Create"></td>
+
+                </tr>
+
+            </table>
+        </form>
+        <br /><button style="width:150px;" class="submit" id="myBtn" onclick="window.location.href='@Url.Content("~/User/Index")'">Cancel</button>
+    </div>
+</body>
+</html>

@@ -1,0 +1,83 @@
+﻿@model Assignment4.User
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>AddUser</title>
+    <script type="text/javascript" src="~/Scripts/jquery-3.2.1.min.js">
+
+    </script>
+    <script type="text/javascript" src="~/Scripts/UserValidate.js">
+
+    </script>
+
+
+    <style>
+        #myDiv {
+            margin-left: 200px;
+            margin-top: 100px;
+        }
+
+         .box{
+            width:300px;height:30px;background-color:white;
+
+        }
+
+        .submit{
+	
+
+width:150px;
+height:30px;
+font-family:arial;
+ border:none;
+ }
+    </style>
+</head>
+<body>
+    <div id="myDiv">
+        <form action='@Url.Content("~/User/Update")'>
+           
+            Name: <input class="box" type="text" id="txtname" name="txtname" value="@Model.Name" /><br /><br /><br />
+            Login: <input class="box" type="text" id="txtlogin" name="txtlogin" value="@Model.Login" /><br /><br /><br />
+            Password: <input class="box" type="password" id="txtpassword" name="txtpassword" value="@Model.Password" /> <br /><br /><br />
+            Email: <input class="box" type="text" id="txtemail" name="txtemail" value="@Model.email" /> <br /><br /><br />
+            Gender: <select class="box" id="txtgender" name="txtgender">
+    <option value="M">Male</option>
+    <option value="F">Female</option>
+    <option value="O">Other</option>
+</select><br /><br /><br />
+            Address: <input class="box" type="text" id="txtaddress" name="txtaddress" value="@Model.Address"  /> <br /><br /><br />
+            Age: <input class="box" type="number" id="txtage" name="txtage" value="@Model.age" /> <br /><br /><br />
+            NIC: <input class="box" type="text" id="txtnic" name="txtnic" value="@Model.NIC" /> <br /><br /><br />
+            DOB: <input class="box" type="date" id="txtdob" name="txtdob" value="@Model.DOB" /> <br /><br /><br />
+            Sports: <input name="txtcricket" id="txtcricket" type="checkbox" @(Model.Cricket==true? "checked='checked'" :string.Empty) />Cricket
+            <input name="txthockey" id="txthockey" type="checkbox" @( Model.Hockey==true?"checked='checked'" :string.Empty )>Hockey
+            <input name="txtchess" id="txtchess" type="checkbox" @( Model.Chess == true ? "checked='checked'" : string.Empty)>Chess
+            <br /><br /><input name="myImage" id="myImage" type="file"><img src="~/UploadedFiles/@Model.ImageName" alt="" width="120" height="120" />
+            <br /><br />
+            <table>
+                <tr>
+                    <td style="width:100px"><input class="submit" name="btnsubmit" id="btnsubmit" type="submit" value="Update"></td>
+                   
+                </tr>
+            </table>
+
+        </form>
+        @{
+            if (TempData["adm"] == null)
+            {
+                <button style="width:150px" class="submit" id="myBtn" onclick="window.location.href='@Url.Content("~/User/Home2")'">Cancel</button>
+        }
+            else
+            {
+            <button style="width:150px" class="submit" id="myBtn" onclick="window.location.href='@Url.Content("~/Admin/HomeAdmin2")'">Cancel</button>
+        }
+        
+        }
+
+       
+
+    </div>
+</body>
+</html>
